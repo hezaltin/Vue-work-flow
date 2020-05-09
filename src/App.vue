@@ -25,6 +25,16 @@
       @click="selectedComponent ='FormBasic'"
     >FormBasic</md-button>
 
+     <md-button
+      class="md-raised md-primary"
+      @click="selectedComponent ='Directive'"
+    >Directive</md-button>
+    
+     <md-button
+      class="md-raised md-primary"
+      @click="selectedComponent ='FiltersAndMixins'"
+    >FiltersAndMixins</md-button>
+
     <p>{{selectedComponent}}</p>
     <keep-alive>
       <component :is="selectedComponent">
@@ -51,7 +61,10 @@ import Author from "./components/Author";
 import AuthorNew from "./components/AuthorNew";
 import QuoteWrapper from './components/quotes-components/QuotesWrapper';
 import FormValidation from './components/form-controls-component/FormControls';
-import FormBasic from './components/form-controls-component/FormBasic'
+import FormBasic from './components/form-controls-component/FormBasic';
+import Directive from './components/directives/Directive';
+import FiltersAndMixins from './components/filters-and-mixins/FiltersAndMixins'
+
 export default {
   name: "App",
   components: {
@@ -61,12 +74,14 @@ export default {
     AuthorNew,
     QuoteWrapper,
     FormValidation,
-    FormBasic
+    FormBasic,
+    Directive,
+    FiltersAndMixins
   },
   data: () => {
     return {
       quoteText: "The Instance got created",
-      selectedComponent: "FormBasic"
+      selectedComponent: "FiltersAndMixins"
     };
   }
 };

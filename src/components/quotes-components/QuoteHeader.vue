@@ -2,7 +2,7 @@
   <div class="header-container">
     <h2>Quotes Added</h2>
     <md-progress-bar md-mode="determinate" :md-value="getComputedLength"></md-progress-bar>
-    <span>{{quoteLength}} / {{maxCount}}</span>
+    <b>{{quoteLength}} / {{maxCount}}</b>
   </div>
 </template>
 
