@@ -15,6 +15,16 @@
       class="md-raised md-primary"
       @click="selectedComponent ='QuoteWrapper'"
     >Quote Wrapper</md-button>
+     <md-button
+      class="md-raised md-primary"
+      @click="selectedComponent ='FormValidation'"
+    >FormValidation</md-button>
+
+     <md-button
+      class="md-raised md-primary"
+      @click="selectedComponent ='FormBasic'"
+    >FormBasic</md-button>
+
     <p>{{selectedComponent}}</p>
     <keep-alive>
       <component :is="selectedComponent">
@@ -39,7 +49,9 @@ import HelloWorld from "./components/HelloWorld.vue";
 import Quote from "./components/Quote";
 import Author from "./components/Author";
 import AuthorNew from "./components/AuthorNew";
-import QuoteWrapper from './components/quotes-components/QuotesWrapper'
+import QuoteWrapper from './components/quotes-components/QuotesWrapper';
+import FormValidation from './components/form-controls-component/FormControls';
+import FormBasic from './components/form-controls-component/FormBasic'
 export default {
   name: "App",
   components: {
@@ -47,12 +59,14 @@ export default {
     Quote,
     Author,
     AuthorNew,
-    QuoteWrapper
+    QuoteWrapper,
+    FormValidation,
+    FormBasic
   },
   data: () => {
     return {
       quoteText: "The Instance got created",
-      selectedComponent: "QuoteWrapper"
+      selectedComponent: "FormBasic"
     };
   }
 };

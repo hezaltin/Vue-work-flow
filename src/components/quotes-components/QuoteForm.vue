@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      quotesTypings: "name"
+      quotesTypings: "Cute Quote"
     };
   },
   methods: {
