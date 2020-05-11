@@ -35,6 +35,11 @@
       @click="selectedComponent ='FiltersAndMixins'"
     >FiltersAndMixins</md-button>
 
+    <md-button
+      class="md-raised md-primary"
+      @click="selectedComponent ='Animation'"
+    >Animation</md-button>
+
     <p>{{selectedComponent}}</p>
     <keep-alive>
       <component :is="selectedComponent">
@@ -64,6 +69,7 @@ import FormValidation from './components/form-controls-component/FormControls';
 import FormBasic from './components/form-controls-component/FormBasic';
 import Directive from './components/directives/Directive';
 import FiltersAndMixins from './components/filters-and-mixins/FiltersAndMixins'
+import Animation from './components/animations/Animation';
 
 export default {
   name: "App",
@@ -76,12 +82,13 @@ export default {
     FormValidation,
     FormBasic,
     Directive,
-    FiltersAndMixins
+    FiltersAndMixins,
+    Animation
   },
   data: () => {
     return {
       quoteText: "The Instance got created",
-      selectedComponent: "FiltersAndMixins"
+      selectedComponent: "Animation"
     };
   }
 };
