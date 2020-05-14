@@ -39,6 +39,10 @@
       class="md-raised md-primary"
       @click="selectedComponent ='Animation'"
     >Animation</md-button>
+    <md-button
+      class="md-raised md-primary"
+      @click="selectedComponent ='AnimationWithQuiz'"
+    >Animation With Quiz</md-button>
 
     <p>{{selectedComponent}}</p>
     <keep-alive>
@@ -70,6 +74,7 @@ import FormBasic from './components/form-controls-component/FormBasic';
 import Directive from './components/directives/Directive';
 import FiltersAndMixins from './components/filters-and-mixins/FiltersAndMixins'
 import Animation from './components/animations/Animation';
+import AnimationWithQuiz from './components/animations-with-quiz/Quiz'
 
 export default {
   name: "App",
@@ -83,12 +88,13 @@ export default {
     FormBasic,
     Directive,
     FiltersAndMixins,
-    Animation
+    Animation,
+    AnimationWithQuiz
   },
   data: () => {
     return {
       quoteText: "The Instance got created",
-      selectedComponent: "Animation"
+      selectedComponent: "AnimationWithQuiz"
     };
   }
 };
@@ -107,7 +113,20 @@ img {
   width: 2%;
   display: flex;
 }
-h2 {
-  /* color: crimson; */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+    /* Default props to work all the browser */
+}
+
+html {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato','Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+     /* Default props to work all the browser */
 }
 </style>
