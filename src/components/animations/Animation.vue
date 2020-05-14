@@ -68,20 +68,40 @@
             key="warning"
           >A simple primary alert by v-else!</div>
         </transition>
-        <hr>
-         <md-button class="md-raised md-primary" @click="selectedComponent === 'app-success-alert' ? selectedComponent = 'app-danger-alert' : selectedComponent = 'app-success-alert'" >Animate</md-button>
-         <br><br>
-        <transition  :name="dynamicName" mode="out-in">
+        <hr />
+        <md-button
+          class="md-raised md-primary"
+          @click="selectedComponent === 'app-success-alert' ? selectedComponent = 'app-danger-alert' : selectedComponent = 'app-success-alert'"
+        >Animate</md-button>
+        <br />
+        <br />
+        <transition :name="dynamicName" mode="out-in">
           <component :is="selectedComponent"></component>
         </transition>
+        <hr />
+        <button class="btn btn-primary" @click="addNumber">Add Number</button>
+        <br />
+        <br />
+
+        <ul class="list-group">
+          <transition-group name="slide" type="animation">
+            <li
+              class="list-group-item"
+              v-for="(number,index) in numbers"
+              :key="number"
+              @click="removeNumber(index)"
+              style="cursor:pointer"
+            >{{number}}</li>
+          </transition-group>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import DangerAlert from './DangerAlert';
-import SuccessAlert from './SuccessAlert';
+import DangerAlert from "./DangerAlert";
+import SuccessAlert from "./SuccessAlert";
 export default {
   data() {
     return {
@@ -89,12 +109,13 @@ export default {
       dynamicName: "fade",
       load: false,
       elementWidth: 100,
-      selectedComponent:'app-danger-alert'
+      selectedComponent: "app-danger-alert",
+      numbers: [1, 3, 5, 7, 9]
     };
   },
-  components:{
-    appDangerAlert:DangerAlert,
-    appSuccessAlert:SuccessAlert
+  components: {
+    appDangerAlert: DangerAlert,
+    appSuccessAlert: SuccessAlert
   },
   methods: {
     beforeEnter(el) {
@@ -144,6 +165,13 @@ export default {
     afterLeaveCancelled(el) {
       console.log("afterLeaveCancelled");
       console.log(el);
+    },
+    addNumber() {
+      const position = Math.floor(Math.random() * this.numbers.length);
+      this.numbers.splice(position, 0, this.numbers.length + 1);
+    },
+    removeNumber(index) {
+      this.numbers.splice(index, 1);
     }
   }
 };
@@ -177,6 +205,10 @@ export default {
   animation: slide-out 1s ease-out forwards;
   transition: opacity 3s;
   opacity: 0;
+  position:absolute;
+}
+.slide-move{
+  transition: transform 1s;
 }
 
 @keyframes slide-in {
