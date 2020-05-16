@@ -43,6 +43,10 @@
       class="md-raised md-primary"
       @click="selectedComponent ='AnimationWithQuiz'"
     >Animation With Quiz</md-button>
+     <md-button
+      class="md-raised md-primary"
+      @click="selectedComponent ='HttpResource'"
+    >Http Resource</md-button>
 
     <p>{{selectedComponent}}</p>
     <keep-alive>
@@ -74,7 +78,8 @@ import FormBasic from './components/form-controls-component/FormBasic';
 import Directive from './components/directives/Directive';
 import FiltersAndMixins from './components/filters-and-mixins/FiltersAndMixins'
 import Animation from './components/animations/Animation';
-import AnimationWithQuiz from './components/animations-with-quiz/Quiz'
+import AnimationWithQuiz from './components/animations-with-quiz/Quiz';
+import HttpResource from './components/http-vue-resource/Http';
 
 export default {
   name: "App",
@@ -89,12 +94,13 @@ export default {
     Directive,
     FiltersAndMixins,
     Animation,
-    AnimationWithQuiz
+    AnimationWithQuiz,
+    HttpResource
   },
   data: () => {
     return {
       quoteText: "The Instance got created",
-      selectedComponent: "AnimationWithQuiz"
+      selectedComponent: "HttpResource"
     };
   }
 };
