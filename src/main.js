@@ -3,10 +3,23 @@ import App from './App.vue';
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css';
+import VueResource from 'vue-resource'
 
 Vue.config.productionTip = false
 Vue.use(VueMaterial);
-
+Vue.use(VueResource);
+Vue.http.options.root = 'https://vue-http-1458b.firebaseio.com';
+Vue.http.interceptors.push((request,next)=>{
+  console.log(request);
+    if(request.method==='POST'){
+      console.log('request is Post!!')
+      request.method = 'PUT';
+    }
+  next(response=>{
+    console.log(response)
+    response.json = () => {return {messages: response.body};};
+  })// callback as response
+})
 Vue.mixin({
   created(){
     console.log('Global Created')
