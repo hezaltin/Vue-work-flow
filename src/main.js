@@ -3,11 +3,20 @@ import App from './App.vue';
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css';
-import VueResource from 'vue-resource'
+import VueResource from 'vue-resource';
+import VueRouter from 'vue-router';
+import {routes} from './routes';
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css'
 
 Vue.config.productionTip = false
 Vue.use(VueMaterial);
 Vue.use(VueResource);
+Vue.use(VueRouter);
+const router = new VueRouter({
+  routes,
+  mode:'history'
+})
 Vue.http.options.root = 'https://vue-http-1458b.firebaseio.com';
 Vue.http.interceptors.push((request,next)=>{
   console.log(request);
@@ -20,6 +29,7 @@ Vue.http.interceptors.push((request,next)=>{
     response.json = () => {return {messages: response.body};};
   })// callback as response
 })
+// global mixins
 Vue.mixin({
   created(){
     console.log('Global Created')
@@ -28,7 +38,7 @@ Vue.mixin({
 Vue.filter('to-lowercase',(value)=>{
   return value.toLowerCase()
 })
-
+// global directive
 Vue.directive('highlight',{
     bind(el,binding){
       //el.style.backgroundColor = 'green';
@@ -56,9 +66,10 @@ Vue.directive('highlight',{
 
     
 })
-
+// global event emitter
 export const eventBus = new Vue();
 
 new Vue({
   render: h => h(App),
+  router
 }).$mount('#app')
