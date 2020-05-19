@@ -13,9 +13,26 @@ Vue.config.productionTip = false
 Vue.use(VueMaterial);
 Vue.use(VueResource);
 Vue.use(VueRouter);
+//to,from,savedPosition
+
 const router = new VueRouter({
   routes,
-  mode:'history'
+  mode:'history',
+  scrollBehavior(to,from,savedPosition){
+    if(savedPosition){
+      console.log('savedPosition',savedPosition)
+      return savedPosition
+    }
+    if(to.hash){
+      return {selector:to.hash}
+    }
+    return {x:0,y:0}
+  }
+});
+
+router.beforeEach((to,from,next)=>{
+  console.log('globalROuting====>')
+  next();
 })
 Vue.http.options.root = 'https://vue-http-1458b.firebaseio.com';
 Vue.http.interceptors.push((request,next)=>{
