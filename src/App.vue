@@ -1,22 +1,32 @@
 <template>
   <div id="app">
     <div>
-      <div>
+      <!-- <div>
         <Header />
-      </div>
-      <router-view></router-view>
+      </div> -->
+      <!-- Multiple Router with Name Router -->
+      <div>
+         <router-view name="header-top"></router-view>
+      </div> 
+      <transition name="slide" mode="out-in" type="animation">
+        <router-view></router-view>
+      </transition>
+      
+      <div>
+         <router-view name="header-bottom"></router-view>
+      </div> 
     </div>
   </div>
 </template>
 
 <script>
 //import Basic from './components/basics-root/basics'
-import Header from "./components/routing-components/header/header";
+// import Header from "./components/routing-components/header/header";
 export default {
   name: "App",
   components: {
     //Basic,
-    Header
+   // Header
   },
   data: () => {
     return {};
@@ -52,5 +62,42 @@ html {
   font-weight: 300;
   text-rendering: optimizeLegibility;
   /* Default props to work all the browser */
+}
+
+.slide-enter {
+  opacity: 0;
+}
+.slide-enter-active {
+  animation: slide-in 1s ease-out forwards;
+  transition: opacity 0.5s;
+}
+.slide-leave {
+  /* opacity: 1; */
+}
+.slide-leave-active {
+  animation: slide-out 1s ease-out forwards;
+  transition: opacity 3s;
+  opacity: 0;
+  position:absolute;
+}
+.slide-move{
+  transition: transform 1s;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes slide-out {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(20px);
+  }
 }
 </style>

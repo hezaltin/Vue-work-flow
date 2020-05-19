@@ -23,7 +23,7 @@ export default {
 //   },
   methods: {
     navigate() {
-      this.$router.push("/");
+      this.$router.push({name:'Basic'});
     }
   }
 };
