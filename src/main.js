@@ -6,10 +6,11 @@ import 'vue-material/dist/theme/default.css';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
 import {routes} from './routes';
-import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
+import 'vue-material/dist/vue-material.min.css';
+import 'vue-material/dist/theme/default.css';
+import {store} from './store/store';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 Vue.use(VueMaterial);
 Vue.use(VueResource);
 Vue.use(VueRouter);
@@ -83,10 +84,11 @@ Vue.directive('highlight',{
 
     
 })
-// global event emitter
+// global event emitter insetad of Vuex state management
 export const eventBus = new Vue();
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')

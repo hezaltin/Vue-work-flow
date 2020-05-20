@@ -1,4 +1,5 @@
 import Basic from "./components/basics-root/basics.vue";
+import Counter from './components/vuex-store/CounterApp.vue'
 // import User from "./components/routing-components/user/User.vue";
 // import UserStart from "./components/routing-components/user/UserStart.vue";
 // import UserDetail from "./components/routing-components/user/UserDetail.vue";
@@ -49,6 +50,14 @@ export const routes = [
       "header-top": Header,
     },
     name: "Basic",
+  },
+  {
+    path: "/counter",
+    components: {
+      default: Counter,
+      "header-top": Header,
+    },
+    name: "Counter",
   },
   {
     path: "/user",

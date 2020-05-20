@@ -20,6 +20,7 @@
         <md-button class="md-primary"><router-link to="/user">User</router-link></md-button>-->
         <router-link to="/" class="md-primary" tag="md-button" active-class="active" exact><a>Basic</a></router-link>
         <router-link to="/user" class="md-primary" tag="md-button" active-class="active"><a>User</a></router-link>
+        <router-link to="/counter" class="md-primary" tag="md-button" active-class="active"><a>Counter</a></router-link>
          <!-- <router-link to="/user/2" class="md-primary" tag="md-button" active-class="active"><a>User2</a></router-link> -->
       </div>
     </md-toolbar>
